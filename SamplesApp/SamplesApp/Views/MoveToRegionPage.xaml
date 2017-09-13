@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+             xmlns:viewModels="clr-namespace:SamplesApp.ViewModels;assembly=SamplesApp"
+             x:Class="SamplesApp.Views.MoveToRegionPage"
+             Title="Move to Region">
+    <ContentPage.BindingContext>
+        <viewModels:MoveToRegionPageViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Text="Move to Tokyo" Command="{Binding MoveToTokyoCommand}"/>
+        <googleMaps:Map Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Fill">
+            <googleMaps:Map.Behaviors>
+                <bindings:MoveToRegionBehavior Request="{Binding MoveToRegionRequest}"/>
+            </googleMaps:Map.Behaviors>
+        </googleMaps:Map>
+    </Grid>
+</ContentPage>
